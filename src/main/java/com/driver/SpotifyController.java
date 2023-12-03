@@ -37,14 +37,14 @@ public class SpotifyController {
     public String createSong(String title, String albumName, int length) throws Exception{
         //If the album does not exist in database, throw "Album does not exist" exception
         //Create and add the song to respective album
-        Song song = spotifyService.createSong(title, albumName, length);
+        Song song = spotifyService.createSong(title,albumName,length);
         return "Success";
     }
 
     @PostMapping("/add-playlist-on-length")
     public String createPlaylistOnLength(String mobile, String title, int length) throws Exception{
         //Create a playlist with given title and add all songs having the given length in the database to that playlist
-        //The creater of the playlist will be the given user and will also be the only listener at the time of playlist creation
+        //The creator of the playlist will be the given user and will also be the only listener at the time of playlist creation
         //If the user does not exist, throw "User does not exist" exception
         Playlist playlist = spotifyService.createPlaylistOnLength(mobile, title, length);
         return "Success";
@@ -53,7 +53,7 @@ public class SpotifyController {
     @PostMapping("/add-playlist-on-name")
     public String createPlaylistOnName(String mobile, String title, List<String> songTitles) throws Exception{
         //Create a playlist with given title and add all songs having the given titles in the database to that playlist
-        //The creater of the playlist will be the given user and will also be the only listener at the time of playlist creation
+        //The creator of the playlist will be the given user and will also be the only listener at the time of playlist creation
         //If the user does not exist, throw "User does not exist" exception
         Playlist playlist = spotifyService.createPlaylistOnName(mobile, title, songTitles);
         return "Success";
@@ -62,9 +62,9 @@ public class SpotifyController {
     @PutMapping("/find-playlist")
     public String findPlaylist(String mobile, String playlistTitle) throws Exception{
         //Find the playlist with given title and add user as listener of that playlist and update user accordingly
-        //If the user is creater or already a listener, do nothing
+        //If the user is creator or already a listener, do nothing
         //If the user does not exist, throw "User does not exist" exception
-        //If the playlist does not exists, throw "Playlist does not exist" exception
+        //If the playlist does not exist, throw "Playlist does not exist" exception
         // Return the playlist after updating
         Playlist playlist = spotifyService.findPlaylist(mobile, playlistTitle);
         return "Success";
